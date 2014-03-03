@@ -2,7 +2,7 @@
   "name": "gameoflife",
   "version": "0.0.1",
   "description": "Game of life",
-  "main": "server.js",
+  "main": "index.js",
   "repository": "https://github.com/erlendr/node-gameoflife",
   "author": "Erlend Røsjø",
   "dependencies": {},
