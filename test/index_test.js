@@ -39,7 +39,7 @@ describe('Game', function(){
             blockBoard[2][2] = "A";
             var sut = new index.Game(blockBoard);
             sut.printBoard();
-            console.log("=============")
+            console.log("====")
             sut.step();
             assert(sut.board[1][1] == "A");
             assert(sut.board[1][2] == "A");
@@ -56,7 +56,7 @@ describe('Game', function(){
             blockBoard[2][3] = "A";
             var sut = new index.Game(blockBoard);
             sut.printBoard();
-            console.log("=============")
+            console.log("=====")
             sut.step();
             sut.printBoard();
             assert(sut.board[2][1] === undefined);
@@ -66,8 +66,6 @@ describe('Game', function(){
             assert(sut.board[3][2] === "A");
             
         })
-    })
-    describe('blinker seed', function(){
         it('blinker seed should rotate in period 3', function(){
             var blockBoard = new index.Board(5,5);
             blockBoard[2][1] = "A";
@@ -75,7 +73,7 @@ describe('Game', function(){
             blockBoard[2][3] = "A";
             var sut = new index.Game(blockBoard);
             sut.printBoard();
-            console.log("=============")
+            console.log("=====")
             sut.step();
             sut.step();
             sut.printBoard();

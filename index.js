@@ -20,61 +20,32 @@ var Game = function(board) {
             if(typeof(row) !== "undefined") {
                 for (var x = 0; x < row.length; x++) {
                     var cell =row[x];
-                    var neighbours = [];
-                    var left = row[x-1];
-                    var right = row[x+1];
-                    var above;
-                    var below;
-                    var topleft;
-                    var topright;
-                    var bottomleft;
-                    var bottomright;
+                    var neighbours = 0;
+                    if(row[x-1]) neighbours++;
+                    if(row[x+1]) neighbours++;
+                    
                     var rowAbove = this.board[y-1];
                     var rowBelow = this.board[y+1];
                     if(typeof(rowAbove) !== "undefined") {
-                        above = rowAbove[x];
-                        topleft = rowAbove[x-1];
-                        topright = rowAbove[x+1];
+                        if(rowAbove[x]) neighbours++;
+                        if(rowAbove[x-1]) neighbours++;
+                        if(rowAbove[x+1]) neighbours++;
                     }
                     if(typeof(rowBelow) !== "undefined") {
-                        below = rowBelow[x];
-                        bottomleft = rowBelow[x-1];
-                        bottomright = rowBelow[x+1];
-                    }
-                    if(typeof(left) !== "undefined") {
-                        neighbours.push(left);
-                    }
-                    if(typeof(right) !== "undefined") {
-                        neighbours.push(right);
-                    }
-                    if(typeof(above) !== "undefined") {
-                        neighbours.push(above);
-                    }
-                    if(typeof(below) !== "undefined") {
-                        neighbours.push(below);
-                    }
-                    if(typeof(bottomleft) !== "undefined") {
-                        neighbours.push(bottomleft);
-                    }
-                    if(typeof(bottomright) !== "undefined") {
-                        neighbours.push(bottomright);
-                    }
-                    if(topleft) {
-                        neighbours.push(topleft);
-                    }
-                    if(topright) {
-                        neighbours.push(topright);
+                        if(rowBelow[x]) neighbours++;
+                        if(rowBelow[x-1]) neighbours++;
+                        if(rowBelow[x+1]) neighbours++;
                     }
 
                     if(typeof(cell) !== "undefined") {
                         if(cell == "A") {
-                            if(neighbours.length > 0) {
-                                if(neighbours.length == 1 || neighbours.length == 4) {
+                            if(neighbours > 0) {
+                                if(neighbours == 1 || neighbours == 4) {
                                     //One or four neighbours means die
                                     cellsToKill.push([x,y]);
                                     
                                 }
-                                else if(neighbours.length == 2 ||neighbours.length == 3) {
+                                else if(neighbours == 2 ||neighbours == 3) {
                                     //do nothing
                                     
                                 }
@@ -87,14 +58,14 @@ var Game = function(board) {
                         }
                         else if(cell == "D") {
                             //Dead cell revial
-                            if(neighbours.length == 3) {
+                            if(neighbours == 3) {
                                 cellsToCreate.push([x,y]);
                             }
                         }
                     }
                     else {
                         //Empty cell creation
-                        if(neighbours.length == 3) {
+                        if(neighbours == 3) {
                             cellsToCreate.push([x,y]);
                         }
                     }
