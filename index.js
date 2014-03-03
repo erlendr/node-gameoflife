@@ -6,7 +6,7 @@ var Board = function(sizeX, sizeY) {
         this.board[i] = new Array(sizeY);
     }
     return this.board;
-}
+};
 
 var Game = function(board) {
     this.tick = 0;
@@ -26,19 +26,19 @@ var Game = function(board) {
                     
                     var rowAbove = this.board[y-1];
                     var rowBelow = this.board[y+1];
-                    if(typeof(rowAbove) !== "undefined") {
+                    if(rowAbove) {
                         if(rowAbove[x]) neighbours++;
                         if(rowAbove[x-1]) neighbours++;
                         if(rowAbove[x+1]) neighbours++;
                     }
-                    if(typeof(rowBelow) !== "undefined") {
+                    if(rowBelow) {
                         if(rowBelow[x]) neighbours++;
                         if(rowBelow[x-1]) neighbours++;
                         if(rowBelow[x+1]) neighbours++;
                     }
 
-                    if(typeof(cell) !== "undefined") {
-                        if(cell == "A") {
+                    if(cell) {
+                        if(cell === "A") {
                             if(neighbours > 0) {
                                 if(neighbours == 1 || neighbours == 4) {
                                     //One or four neighbours means die
@@ -56,7 +56,7 @@ var Game = function(board) {
                                 
                             }
                         }
-                        else if(cell == "D") {
+                        else if(cell === "D") {
                             //Dead cell revial
                             if(neighbours == 3) {
                                 cellsToCreate.push([x,y]);
@@ -87,7 +87,8 @@ var Game = function(board) {
         }
         
         this.tick++;
-    }
+    };
+
     this.printBoard = function() {
         for (var x = 0; x < this.board.length; ++x) {
             var row = this.board[x];
@@ -102,7 +103,7 @@ var Game = function(board) {
             }
             console.log(rowText);
         }
-    }
+    };
 };
 
 module.exports.Board = Board;
