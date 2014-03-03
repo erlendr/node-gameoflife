@@ -17,7 +17,7 @@ var Game = function(board) {
         
         for (var y = 0; y < this.board.length; y++) {
             var row = this.board[y];
-            if(typeof(row) !== "undefined") {
+            if(row) {
                 for (var x = 0; x < row.length; x++) {
                     var cell =row[x];
                     var neighbours = 0;
