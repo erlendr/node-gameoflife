@@ -1,10 +1,10 @@
 {
   "name": "gameoflife",
-  "version": "0.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "Game of life",
   "main": "server.js",
-  "repository": "",
-  "author": "",
+  "repository": "https://github.com/erlendr/node-gameoflife",
+  "author": "Erlend Røsjø",
   "dependencies": {},
   "devDependencies": {
     "mocha": "~1.17.1",
