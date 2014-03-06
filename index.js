@@ -106,5 +106,14 @@ var Game = function(board) {
     };
 };
 
+var b = new Board(6,6)
+var g = new Game(b);
+b[1][1] = "A";
+b[1][2] = "A";
+b[2][1] = "A";
+b[2][2] = "A";
+g.step();
+g.printBoard();
+
 module.exports.Board = Board;
 module.exports.Game = Game;

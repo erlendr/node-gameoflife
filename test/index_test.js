@@ -83,51 +83,69 @@ describe('Game', function(){
       assert(sut.board[3][2] === undefined);
     });
   });
-  describe('toad seed', function() {
-    it('toad seed should change in period 2', function () {
-      var blockBoard = new index.Board(6,6);
-      blockBoard[2][2] = "A";
-      blockBoard[2][3] = "A";
-      blockBoard[2][4] = "A";
-      blockBoard[3][1] = "A";
-      blockBoard[3][2] = "A";
-      blockBoard[3][3] = "A";
-      var sut = new index.Game(blockBoard);
-      sut.printBoard();
-      sut.step();
-      console.log("======");
-      sut.printBoard();
-      assert(sut.board[1][3] === "A");
-      assert(sut.board[2][1] === "A");
-      assert(sut.board[2][4] === "A");
-      assert(sut.board[3][4] === "A");
-      assert(sut.board[3][4] === "A");
-      assert(sut.board[4][2] === "A");
-      assert(sut.board[2][2] === undefined);
-      assert(sut.board[2][3] === undefined);
-    });
-  });
 describe('toad seed', function() {
-    it('toad seed should change back in period 3', function () {
-      var blockBoard = new index.Board(6,6);
-      blockBoard[2][2] = "A";
-      blockBoard[2][3] = "A";
-      blockBoard[2][4] = "A";
-      blockBoard[3][1] = "A";
-      blockBoard[3][2] = "A";
-      blockBoard[3][3] = "A";
-      var sut = new index.Game(blockBoard);
-      sut.printBoard();
-      sut.step();
-      sut.step();
-      console.log("======");
-      sut.printBoard();
-      assert(sut.board[2][2] === "A");
-      assert(sut.board[2][3] === "A");
-      assert(sut.board[2][4] === "A");
-      assert(sut.board[3][1] === "A");
-      assert(sut.board[3][2] === "A");
-      assert(sut.board[3][3] === "A");
-    });
+  it('toad seed should change in period 2', function () {
+    var blockBoard = new index.Board(6,6);
+    blockBoard[2][2] = "A";
+    blockBoard[2][3] = "A";
+    blockBoard[2][4] = "A";
+    blockBoard[3][1] = "A";
+    blockBoard[3][2] = "A";
+    blockBoard[3][3] = "A";
+    var sut = new index.Game(blockBoard);
+    sut.printBoard();
+    sut.step();
+    console.log("======");
+    sut.printBoard();
+    assert(sut.board[1][3] === "A");
+    assert(sut.board[2][1] === "A");
+    assert(sut.board[2][4] === "A");
+    assert(sut.board[3][4] === "A");
+    assert(sut.board[3][4] === "A");
+    assert(sut.board[4][2] === "A");
+    assert(sut.board[2][2] === undefined);
+    assert(sut.board[2][3] === undefined);
   });
+  it('toad seed should change back in period 3', function () {
+    var blockBoard = new index.Board(6,6);
+    blockBoard[2][2] = "A";
+    blockBoard[2][3] = "A";
+    blockBoard[2][4] = "A";
+    blockBoard[3][1] = "A";
+    blockBoard[3][2] = "A";
+    blockBoard[3][3] = "A";
+    var sut = new index.Game(blockBoard);
+    sut.printBoard();
+    sut.step();
+    sut.step();
+    console.log("======");
+    sut.printBoard();
+    assert(sut.board[2][2] === "A");
+    assert(sut.board[2][3] === "A");
+    assert(sut.board[2][4] === "A");
+    assert(sut.board[3][1] === "A");
+    assert(sut.board[3][2] === "A");
+    assert(sut.board[3][3] === "A");
+  });
+});
+describe('beacon seed', function() {
+  it('beacon seed should change in period 2', function() {
+    var blockBoard = new index.Board(6,6);
+    blockBoard[1][1] = "A";
+    blockBoard[1][2] = "A";
+    blockBoard[2][1] = "A";
+    blockBoard[2][2] = "A";
+
+    blockBoard[3][3] = "A";
+    blockBoard[3][4] = "A";
+    blockBoard[4][3] = "A";
+    blockBoard[4][4] = "A";
+    var sut = new index.Game(blockBoard);
+    sut.printBoard();
+    sut.step();
+    console.log("======");
+    sut.printBoard();
+    //TODO create asserts
+  });
+});
 });
