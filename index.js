@@ -106,14 +106,34 @@ var Game = function(board) {
     };
 };
 
-var b = new Board(6,6)
-var g = new Game(b);
-b[1][1] = "A";
-b[1][2] = "A";
+var b = new Board(30,30)
+b[1][3] = "A";
 b[2][1] = "A";
-b[2][2] = "A";
-g.step();
-g.printBoard();
+b[2][3] = "A";
+b[3][2] = "A";
+b[3][3] = "A";
+
+var g = new Game(b);
+
+var util = require('util');
+
+var steps = process.argv[2] ? process.argv[2] : 1;
+
+var stepsTaken = 0;
+var interval;
+
+var stepGame = function() {
+    util.print("\u001b[2J\u001b[0;0H");
+    g.step();
+    console.log("GAME OF LIFE - step:",stepsTaken)
+    g.printBoard();
+    if(stepsTaken == steps) {
+      clearInterval(interval);
+    }
+    stepsTaken++;
+}
+
+interval = setInterval(stepGame, 200);
 
 module.exports.Board = Board;
 module.exports.Game = Game;
